@@ -7,15 +7,9 @@
     "packages/*"
   ],
   "scripts": {
+    "start": "concurrently 'yarn start:server' 'yarn start:client'",
     "start:client": "yarn workspace client-app dev",
-    "start:server": "yarn workspace server dev",
-    "lint": "gts lint",
-    "clean": "gts clean",
-    "compile": "tsc",
-    "fix": "gts fix",
-    "prepare": "yarn run compile",
-    "pretest": "yarn run compile",
-    "posttest": "yarn run lint"
+    "start:server": "yarn workspace server dev"
   },
   "devDependencies": {
     "@types/jest": "^28.1.6",

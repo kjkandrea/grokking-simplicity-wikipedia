@@ -1,12 +1,12 @@
-import {DB} from './lowdb.js';
-import {Wiki} from '../data/schema.js';
+import {AbstractDB} from './lowdb.js';
+import {Wiki} from '../../data/schema.js';
 
 interface WikiPayload {
   keyword: string;
   content: string;
 }
 
-export const postWiki = (db: DB, payload: WikiPayload) => {
+export const writeWiki = (db: AbstractDB, payload: WikiPayload) => {
   const newWiki: Wiki = {
     [payload.keyword]: {
       content: payload.content,
