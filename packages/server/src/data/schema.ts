@@ -5,6 +5,10 @@ export interface Schema {
 type Keyword = string;
 type Content = string;
 
-interface Wiki {
-  [key: Keyword]: Content;
+export interface Wiki {
+  [key: Keyword]: {
+    content: Content;
+    createdDateTime: string;
+    viewCount: number;
+  };
 }
