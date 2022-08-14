@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "allowSyntheticDefaultImports": true
+    "target": "ESNext",
+    "module": "node16",
+    "moduleResolution": "node16",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
   },
   "exclude": [
     "node_modules"

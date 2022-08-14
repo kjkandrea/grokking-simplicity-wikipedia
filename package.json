@@ -9,7 +9,6 @@
   "scripts": {
     "start:client": "yarn workspace client-app dev",
     "start:server": "yarn workspace server dev",
-
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",
@@ -19,9 +18,11 @@
     "posttest": "yarn run lint"
   },
   "devDependencies": {
+    "@types/jest": "^28.1.6",
     "@types/node": "^14.11.2",
     "concurrently": "^7.3.0",
     "gts": "^3.1.0",
+    "jest": "^28.1.3",
     "typescript": "^4.6.4",
     "vite": "^3.0.7"
   }
