@@ -1,7 +1,6 @@
 {
   "name": "grokking-simplicity-wikipedia",
   "version": "0.0.0",
-  "main": "index.js",
   "repository": "https://github.com/kjkandrea/grokking-simplicity-wikipedia.git",
   "private": true,
   "workspaces": [
@@ -9,6 +8,7 @@
   ],
   "scripts": {
     "start:client": "yarn workspace client-app dev",
+    "start:server": "yarn workspace server dev",
 
     "lint": "gts lint",
     "clean": "gts clean",
