@@ -12,14 +12,16 @@ const db = new Low(adapter);
 
 // Read data from JSON file, this will set db.data content
 await db.read();
-console.log(db);
+(db.data as any).hello.push('hello world');
+console.log(db.data);
+await db.write();
 
-const app = express();
-
-app.get('/', (req: express.Request, res: express.Response) => {
-  res.send('Hello');
-});
-
-app.listen(8080, () => {
-  console.log('Started server with 8080');
-});
+// const app = express();
+//
+// app.get('/', (req: express.Request, res: express.Response) => {
+//   res.send('Hello');
+// });
+//
+// app.listen(8080, () => {
+//   console.log('Started server with 8080');
+// });
