@@ -1,9 +1,5 @@
 {
-  "articles": [
-    {
-      "id": "1",
-      "title": "hello",
-      "content": "world"
-    }
-  ]
+  "wiki": {
+    "키워드에용": "초선이에용"
+  }
 }

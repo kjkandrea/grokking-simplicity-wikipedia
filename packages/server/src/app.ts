@@ -1,27 +1,15 @@
 import express from 'express';
-import {join, dirname} from 'path';
-import {Low, JSONFile} from 'lowdb';
-import {fileURLToPath} from 'url';
-import {Schema} from './data/schema.js';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// Use JSON file for storage
-const file = join(__dirname, '../db/db.json');
-const adapter = new JSONFile<Schema>(file);
-const db = new Low(adapter);
-
-// Read data from JSON file, this will set db.data content
-await db.read();
-db.data.articles.push({
-  id: '1',
-  title: 'hello',
-  content: 'world',
-});
-console.log(db.data);
-await db.write();
+import {postWiki} from './actions/wiki.js';
+import {setup} from './actions/lowdb.js';
 
 const app = express();
+
+const db = await setup();
+
+postWiki(db, {
+  keyword: '키워드에용',
+  content: '초선이에용',
+});
 
 app.get('/', (req: express.Request, res: express.Response) => {
   res.send('Hello');

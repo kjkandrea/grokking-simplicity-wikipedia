@@ -1,9 +1,10 @@
 export interface Schema {
-  articles: Article[];
+  wiki: Wiki;
 }
 
-interface Article {
-  id: string;
-  title: string;
-  content: string;
+type Keyword = string;
+type Content = string;
+
+interface Wiki {
+  [key: Keyword]: Content;
 }
