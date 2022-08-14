@@ -1,14 +1,9 @@
 {
-  "hello": [
-    "hello world",
-    "hello world",
-    "hello world",
-    "hello world",
-    "hello world",
-    "hello world",
-    "hello world",
-    "hello world",
-    "hello world",
-    "hello world"
+  "articles": [
+    {
+      "id": "1",
+      "title": "hello",
+      "content": "world"
+    }
   ]
 }
