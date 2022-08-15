@@ -1,11 +1,11 @@
 import {Request, Response} from 'express';
-import {objectTypeErrorThrower} from '../../global/calculations/validation.js';
+import {throwObjectTypeError} from '../../global/calculations/validation.js';
 
 const postWiki = (req: Request, res: Response) => {
   const {body} = req;
 
   try {
-    objectTypeErrorThrower(body, {
+    throwObjectTypeError(body, {
       keyword: 'string',
       content: 'string',
     });
