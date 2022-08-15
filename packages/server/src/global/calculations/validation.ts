@@ -1,4 +1,4 @@
-type PrimitiveType = 'string';
+type PrimitiveType = 'string' | 'number' | 'boolean';
 
 type TypedObject<K extends PropertyKey> = {
   [key in K]: PrimitiveType;

@@ -23,5 +23,14 @@ describe('validation', () => {
         )
       ).not.toThrowError();
     });
+
+    it("{ foo: '123', bar: 123, baz: true }, { foo: 'string', bar: 'number', baz: 'boolean' } 이면 에러를 throw 하지 않는다.", () => {
+      expect(() =>
+        throwObjectTypeError(
+          {foo: '123', bar: 123, baz: true},
+          {foo: 'string', bar: 'number', baz: 'boolean'}
+        )
+      ).not.toThrowError();
+    });
   });
 });
