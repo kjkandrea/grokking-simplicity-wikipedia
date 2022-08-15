@@ -1,10 +1,13 @@
-// writeWiki(db, {
-//   keyword: '키워드에용2',
-//   content: '초선이에용',
-// });
+import {Request, Response} from 'express';
 
-const postWiki = req => {
-  console.log(req);
+const postWiki = (req: Request, res: Response) => {
+  const {body} = req;
+
+  if (typeof body.keyword !== 'string') {
+    res.status(400).send({message: 'keyword 가 잘못되었습니다.', status: 400});
+  }
+
+  res.send(204);
 };
 
 export {postWiki};
