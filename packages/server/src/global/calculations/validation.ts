@@ -27,7 +27,7 @@ export const throwObjectTypeError = <T extends object>(
 export const throwObjectValueEmptyError = <T extends object>(object: T) => {
   const [problemKey] =
     Object.entries(object).find(([, v]) => {
-      const value = typeof v === 'string' ? v.trim() : v;
+      const value = typeof v === 'string' ? v.trim() : v.toString();
       return !value;
     }) ?? [];
 
