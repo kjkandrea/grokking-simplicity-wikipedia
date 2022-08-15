@@ -1,5 +1,8 @@
 import {Request, Response} from 'express';
-import {throwObjectTypeError} from '../../global/calculations/validation.js';
+import {
+  throwObjectTypeError,
+  throwObjectValueEmptyError,
+} from '../../global/calculations/validation.js';
 
 const postWiki = (req: Request, res: Response) => {
   const {body} = req;
@@ -9,6 +12,7 @@ const postWiki = (req: Request, res: Response) => {
       keyword: 'string',
       content: 'string',
     });
+    throwObjectValueEmptyError(body);
   } catch (error) {
     res.status(400).send({message: (error as Error).message, status: 400});
   }

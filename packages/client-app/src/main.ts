@@ -25,7 +25,7 @@ button.addEventListener('click', () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      keyword: 123,
+      keyword: '안녕하세요',
       content: '난 냐옹이다냐옹',
     }),
   }).then(console.log);
