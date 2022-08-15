@@ -1,4 +1,4 @@
-import {throwObjectTypeError} from './validation';
+import {throwObjectTypeError, throwObjectValueEmptyError} from './validation';
 
 describe('validation', () => {
   describe('throwObjectTypeError()', () => {
@@ -31,6 +31,16 @@ describe('validation', () => {
           {foo: 'string', bar: 'number', baz: 'boolean'}
         )
       ).not.toThrowError();
+    });
+  });
+
+  describe('throwObjectValueEmptyError()', () => {
+    it("{ foo: '' } 이면 에러를 throw 한다.", () => {
+      expect(() => throwObjectValueEmptyError({foo: ''})).toThrowError();
+    });
+
+    it('{ foo: 0 } 이면 에러를 throw 하지 않는다.', () => {
+      expect(() => throwObjectValueEmptyError({foo: 0})).not.toThrowError();
     });
   });
 });
