@@ -13,21 +13,23 @@ export const throwObjectTypeError = <T extends object>(
   object: T,
   typedObject: TypedObject<keyof T>
 ) => {
-  Object.entries(typedObject).forEach(([k, v]) => {
-    const currentValue = object[k as keyof T];
-    const primitiveType = v as PrimitiveType;
+  const [problemKey] =
+    Object.entries(typedObject).find(([k, v]) => {
+      const currentValue = object[k as keyof T];
+      const primitiveType = v as PrimitiveType;
 
-    if (typeof currentValue !== primitiveType) {
-      throw new Error(messageTemplate.typeError(k));
-    }
-  });
+      return typeof currentValue !== primitiveType;
+    }) ?? [];
+
+  if (problemKey) throw new Error(messageTemplate.typeError(problemKey));
 };
 
 export const throwObjectValueEmptyError = <T extends object>(object: T) => {
-  Object.entries(object).forEach(([k, v]) => {
-    const value = typeof v === 'string' ? v.trim() : v;
-    if (!value) {
-      throw new Error(messageTemplate.emptyError(k));
-    }
-  });
+  const [problemKey] =
+    Object.entries(object).find(([, v]) => {
+      const value = typeof v === 'string' ? v.trim() : v;
+      return !value;
+    }) ?? [];
+
+  if (problemKey) throw new Error(messageTemplate.emptyError(problemKey));
 };
