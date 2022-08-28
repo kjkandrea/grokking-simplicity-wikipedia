@@ -44,9 +44,8 @@ class WikiApi {
     res.status(204).send();
   };
 
-  public getWiki = async (req: Request, res: Response) => {
-    console.log(req);
-    const {wiki} = await this.wikiCrud.read();
+  public getWiki = (_req: Request, res: Response) => {
+    const wiki = this.wikiCrud.read();
     res.status(200).send(wiki);
   };
 }

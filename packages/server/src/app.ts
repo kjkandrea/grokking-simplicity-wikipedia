@@ -11,6 +11,7 @@ app.use(express.json());
 const database = await setupDatabase();
 const wikiApi = setupWikiApi(database);
 
+app.get('/wiki', wikiApi.getWiki);
 app.post('/wiki', wikiApi.postWiki);
 
 app.listen(8080, () => {
