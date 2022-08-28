@@ -1,4 +1,4 @@
-import {Schema} from '../../data/schema.js';
+import {Schema} from './schema.js';
 
 type InvalidAbstractDBData = null;
 type ValidAbstractDBData = Schema;
@@ -21,7 +21,7 @@ interface WikiPayload {
   content: string;
 }
 
-export class WikiCRUD {
+class WikiCrud {
   private db: AbstractDB;
 
   constructor(db: InvalidAbstractDB | AbstractDB) {
@@ -32,8 +32,13 @@ export class WikiCRUD {
     }
   }
 
+  static setup(db: InvalidAbstractDB | AbstractDB) {
+    return new WikiCrud(db);
+  }
+
   public create({keyword, content}: WikiPayload) {
-    this.db.data.wiki[keyword] = WikiCRUD.makeWikiItemBy(content);
+    console.log('call create');
+    this.db.data.wiki[keyword] = WikiCrud.makeWikiItemBy(content);
 
     return this.save();
   }
@@ -50,3 +55,6 @@ export class WikiCRUD {
     return this.db.write();
   }
 }
+
+const setupWikiCrud = WikiCrud.setup;
+export default setupWikiCrud;

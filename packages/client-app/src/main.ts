@@ -26,7 +26,7 @@ button.addEventListener('click', () => {
     },
     body: JSON.stringify({
       keyword: '안녕하세요',
-      content: '난 냐옹이다냐옹',
+      content: '난 냐옹이다냐옹2',
     }),
   }).then(console.log);
 });
