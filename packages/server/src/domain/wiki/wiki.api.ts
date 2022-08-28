@@ -13,7 +13,7 @@ interface WikiPayload {
 
 interface WikiCrud {
   create: (payload: WikiPayload) => Promise<void>;
-  read: () => Promise<Wiki>;
+  read: () => Wiki;
 }
 
 class WikiApi {
@@ -46,7 +46,7 @@ class WikiApi {
 
   public getWiki = async (req: Request, res: Response) => {
     console.log(req);
-    const wiki = await this.wikiCrud.read();
+    const {wiki} = await this.wikiCrud.read();
     res.status(200).send(wiki);
   };
 }

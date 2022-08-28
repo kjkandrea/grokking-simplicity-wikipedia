@@ -2,13 +2,12 @@ export interface Schema {
   wiki: Wiki;
 }
 
-type Keyword = string;
-type Content = string;
-
 export interface Wiki {
-  [key: Keyword]: {
-    content: Content;
-    createdDateTime: string;
-    viewCount: number;
-  };
+  [key: string]: WikiItem;
+}
+
+export interface WikiItem {
+  content: string;
+  createdDateTime: string;
+  viewCount: number;
 }

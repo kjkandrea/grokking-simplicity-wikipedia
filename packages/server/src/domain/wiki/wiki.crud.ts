@@ -6,7 +6,6 @@ type ValidAbstractDBData = {
 };
 
 interface AbstractDBMethods {
-  read: () => Promise<void>;
   write: () => Promise<void>;
 }
 
@@ -14,9 +13,11 @@ type InvalidAbstractDB = AbstractDBMethods & {
   data: InvalidAbstractDBData;
 };
 
-export type AbstractDB = AbstractDBMethods & {
+type ValidAbstractDB = AbstractDBMethods & {
   data: ValidAbstractDBData;
 };
+
+export type AbstractDB = InvalidAbstractDB | ValidAbstractDB;
 
 interface WikiPayload {
   keyword: string;
@@ -24,9 +25,9 @@ interface WikiPayload {
 }
 
 class WikiCrud {
-  private db: AbstractDB;
+  private db: ValidAbstractDB;
 
-  constructor(db: InvalidAbstractDB | AbstractDB) {
+  constructor(db: AbstractDB) {
     if (db.data === null) {
       throw new Error('schema is null');
     } else {
@@ -34,7 +35,7 @@ class WikiCrud {
     }
   }
 
-  static setup(db: InvalidAbstractDB | AbstractDB) {
+  static setup(db: AbstractDB) {
     return new WikiCrud(db);
   }
 
