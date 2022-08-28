@@ -2,7 +2,7 @@ import {Request, Response} from 'express';
 import {
   throwObjectTypeError,
   throwObjectValueEmptyError,
-} from '../../global/calculations/validation.js';
+} from '../../global/actions/validation.js';
 
 const postWiki = (req: Request, res: Response) => {
   const {body} = req;
