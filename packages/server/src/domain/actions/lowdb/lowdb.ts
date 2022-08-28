@@ -7,12 +7,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const file = join(__dirname, '../../../../db/db.json');
 const adapter = new JSONFile<Schema>(file);
 
-export interface AbstractDB {
-  data: Schema | null;
-  read: () => Promise<void>;
-  write: () => Promise<void>;
-}
-
-const db: AbstractDB = new Low(adapter);
+const db = new Low(adapter);
 
 export const setup = () => db.read().then(() => db);
