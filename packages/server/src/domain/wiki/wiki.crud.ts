@@ -1,5 +1,17 @@
+interface WikiItem {
+  content: string;
+  createdDateTime: string;
+  viewCount: number;
+}
+
+interface Wiki {
+  [key: string]: WikiItem;
+}
+
 type InvalidAbstractDBData = null;
-type ValidAbstractDBData = any;
+type ValidAbstractDBData = {
+  wiki: Wiki;
+};
 
 interface AbstractDBMethods {
   read: () => Promise<void>;
@@ -40,7 +52,11 @@ class WikiCrud {
     return this.save();
   }
 
-  private static makeWikiItemBy(content: string) {
+  public read(): Wiki {
+    return {...this.db.data.wiki};
+  }
+
+  private static makeWikiItemBy(content: string): WikiItem {
     return {
       content: content,
       createdDateTime: new Date().toISOString(),
