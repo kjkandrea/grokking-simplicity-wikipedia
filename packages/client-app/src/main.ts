@@ -15,10 +15,21 @@ app.innerHTML = `
   </div>
 `;
 
-const button = document.createElement('button');
-button.textContent = '확그냥 막그냥 포스트 요청 날려버리기';
+const getButton = document.createElement('button');
+getButton.type = 'button';
+getButton.textContent = '겟 요청 테스트';
 
-button.addEventListener('click', () => {
+getButton.addEventListener('click', () => {
+  fetch('http://localhost:8080/wiki').then(console.log);
+});
+
+app.append(getButton);
+
+const postButton = document.createElement('button');
+postButton.type = 'button';
+postButton.textContent = '확그냥 막그냥 포스트 요청 날려버리기';
+
+postButton.addEventListener('click', () => {
   fetch('http://localhost:8080/wiki', {
     method: 'POST',
     headers: {
@@ -31,4 +42,4 @@ button.addEventListener('click', () => {
   }).then(console.log);
 });
 
-app.append(button);
+app.append(postButton);
