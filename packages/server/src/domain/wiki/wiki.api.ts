@@ -4,6 +4,8 @@ import {
   throwObjectValueEmptyError,
 } from '../../global/actions/validation.js';
 
+import {Wiki} from './type.js';
+
 interface WikiPayload {
   keyword: string;
   content: string;
@@ -11,6 +13,7 @@ interface WikiPayload {
 
 interface WikiCRUD {
   create: (payload: WikiPayload) => Promise<void>;
+  read: () => Promise<Wiki>;
 }
 
 class WikiApi {
@@ -38,7 +41,13 @@ class WikiApi {
     }
 
     await this.wikiCRUD.create(body);
-    res.send(204);
+    res.status(204).send();
+  };
+
+  public getWiki = async (req: Request, res: Response) => {
+    console.log(req);
+    const wiki = await this.wikiCRUD.read();
+    res.status(200).send(wiki);
   };
 }
 

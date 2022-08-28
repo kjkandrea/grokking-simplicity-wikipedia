@@ -1,12 +1,4 @@
-interface WikiItem {
-  content: string;
-  createdDateTime: string;
-  viewCount: number;
-}
-
-interface Wiki {
-  [key: string]: WikiItem;
-}
+import {Wiki, WikiItem} from './type.js';
 
 type InvalidAbstractDBData = null;
 type ValidAbstractDBData = {
