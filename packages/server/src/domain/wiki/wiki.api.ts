@@ -11,19 +11,19 @@ interface WikiPayload {
   content: string;
 }
 
-interface WikiCRUD {
+interface WikiCrud {
   create: (payload: WikiPayload) => Promise<void>;
   read: () => Promise<Wiki>;
 }
 
 class WikiApi {
-  private wikiCRUD: WikiCRUD;
+  private wikiCrud: WikiCrud;
 
-  constructor(wikiCRUD: WikiCRUD) {
-    this.wikiCRUD = wikiCRUD;
+  constructor(wikiCRUD: WikiCrud) {
+    this.wikiCrud = wikiCRUD;
   }
 
-  static setup(wikiCRUD: WikiCRUD) {
+  static setup(wikiCRUD: WikiCrud) {
     return new WikiApi(wikiCRUD);
   }
 
@@ -40,13 +40,13 @@ class WikiApi {
       res.status(400).send({message: (error as Error).message, status: 400});
     }
 
-    await this.wikiCRUD.create(body);
+    await this.wikiCrud.create(body);
     res.status(204).send();
   };
 
   public getWiki = async (req: Request, res: Response) => {
     console.log(req);
-    const wiki = await this.wikiCRUD.read();
+    const wiki = await this.wikiCrud.read();
     res.status(200).send(wiki);
   };
 }
