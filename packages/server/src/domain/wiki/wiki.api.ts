@@ -17,7 +17,6 @@ class WikiApi {
   private wikiCRUD: WikiCRUD;
 
   constructor(wikiCRUD: WikiCRUD) {
-    console.log('wikiCRUDDDD', wikiCRUD.create);
     this.wikiCRUD = wikiCRUD;
   }
 

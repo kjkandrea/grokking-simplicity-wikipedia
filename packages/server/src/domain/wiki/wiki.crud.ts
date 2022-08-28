@@ -35,7 +35,6 @@ class WikiCrud {
   }
 
   public create({keyword, content}: WikiPayload) {
-    console.log('call create');
     this.db.data.wiki[keyword] = WikiCrud.makeWikiItemBy(content);
 
     return this.save();
