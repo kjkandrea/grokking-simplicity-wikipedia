@@ -1,7 +1,5 @@
-import {Schema} from './schema.js';
-
 type InvalidAbstractDBData = null;
-type ValidAbstractDBData = Schema;
+type ValidAbstractDBData = any;
 
 interface AbstractDBMethods {
   read: () => Promise<void>;
@@ -12,7 +10,7 @@ type InvalidAbstractDB = AbstractDBMethods & {
   data: InvalidAbstractDBData;
 };
 
-type AbstractDB = AbstractDBMethods & {
+export type AbstractDB = AbstractDBMethods & {
   data: ValidAbstractDBData;
 };
 
@@ -56,5 +54,5 @@ class WikiCrud {
   }
 }
 
-const setupWikiCrud = WikiCrud.setup;
-export default setupWikiCrud;
+const _setupWikiCrud = WikiCrud.setup;
+export default _setupWikiCrud;

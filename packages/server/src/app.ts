@@ -1,12 +1,15 @@
 import express from 'express';
 import cors from 'cors';
-import api from './domain/wiki/index.js';
+import setupWikiApi from './domain/wiki/index.js';
+
+import setupDatabase from '@gsw/database';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const wikiApi = api;
+const database = await setupDatabase();
+const wikiApi = setupWikiApi(database);
 
 app.post('/wiki', wikiApi.postWiki);
 

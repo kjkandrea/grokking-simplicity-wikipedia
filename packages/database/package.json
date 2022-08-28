@@ -1,0 +1,12 @@
+{
+  "name": "@gsw/database",
+  "version": "1.0.0",
+  "main": "database.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/lowdb": "^1.0.11"
+  },
+  "dependencies": {
+    "lowdb": "^3.0.0"
+  }
+}

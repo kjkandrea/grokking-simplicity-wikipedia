@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "src/app.ts",
   "type": "module",
   "license": "MIT",
   "scripts": {
@@ -16,6 +16,7 @@
     "ts-node": "^10.9.1"
   },
   "dependencies": {
+    "@gsw/database": "*",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "lowdb": "^3.0.0"

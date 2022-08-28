@@ -43,5 +43,5 @@ class WikiApi {
   };
 }
 
-const setupWikiApi = WikiApi.setup;
-export default setupWikiApi;
+const _setupWikiApi = WikiApi.setup;
+export default _setupWikiApi;
