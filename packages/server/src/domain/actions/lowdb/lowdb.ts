@@ -8,7 +8,7 @@ const file = join(__dirname, '../../../../db/db.json');
 const adapter = new JSONFile<Schema>(file);
 
 export interface AbstractDB {
-  data: Schema;
+  data: Schema | null;
   read: () => Promise<void>;
   write: () => Promise<void>;
 }
